@@ -1,0 +1,71 @@
+{
+  "version": "2026-10-21",
+  "model_file": "20261021_daily_model.json",
+  "report_xlsx": "../2026_외식시장_일평균_근거통합_20261021.xlsx",
+  "source_period": {
+    "start": "2024-01-01",
+    "end": "2026-10-20"
+  },
+  "plot_period": {
+    "start": "2025-01-01",
+    "end": "2026-10-20"
+  },
+  "groups": "51 Naver query baskets: id,label,domain,axis,keywords(actual active input),raw_max,source_file,result_url,download_url,daily[date,raw_ratio,normalized_index],monthly[month,start,end,days,value,prior_start,prior_end,prior_days,prior_value,yoy_fraction,yoy_pct,label]",
+  "brands": "11 unique Some keyword sets, 110 monthly records during2026-01-01..10-20; raw documents and3channels; value=documents/actual days",
+  "retail": "Dabom2025-01..2026-09:21months×9items189records;kg,sales_amount_thousand_krw,days,value=kg/days;sample only",
+  "pages": "17:common1-4,common_flavor5,burger6-9,chicken10-17;series.points references values/labels for1742totalnativepoints",
+  "rules": {
+    "normalization": "raw_ratio/group_raw_max*100 across2024-01-01..2026-10-20;each basket own peak;not comparable search volume",
+    "monthly_average": "mean daily normalized index within actual start..end;no interpolation",
+    "year_over_year": "value/prior_same_period_value-1;fraction0.1 means10%;prior0=>null/(전년0)",
+    "october": "2026Oct1..20 comparedwith2025Oct1..20;2025Octplottedvalue itself remainsfull31daymean",
+    "zero": "Naverpublished0canbeprivacy/roundingthreshold;notproofzeroqueries",
+    "separation": "Naverindex,Some document counts,and sample retailkg mustnot beconflated withpreference/sales/procurement",
+    "active_keywords": "Use groups.keywords,not historicaloriginal_query(Google operators mayremain there)"
+  },
+  "verification": {
+    "raw_naver_days": 52224,
+    "raw_pos_records": 189,
+    "raw_brand_months": 110,
+    "monthly_records": 1122,
+    "native_points_crosschecked": 1742,
+    "custom_labels_crosschecked": 1676,
+    "actual_office_rendering": "unverified",
+    "actual_excel_recalculation": "unverified"
+  },
+  "report_ppt": "../market_monitoring_20261021_insights.pptx",
+  "headlines_file": "20261021_headlines.json",
+  "headline_rules": "Topic title plus observed result: values,period andcomparisons mustbe grounded;static2026-10-20snapshot statements mustbe regenerated when sourcedata is refreshed,not re-used as live insights.",
+  "latest_executive_model": "20261022_executive_model.json",
+  "latest_report_ppt": "../market_company_updated_20261022.pptx",
+  "latest_report_xlsx": "../market_company_aligned_evidence_20261022.xlsx",
+  "latest_report_scope": "19pages=summary1+company1+market17;Naver/companylatest19days;SomeJanSepfullmonths",
+  "company_data_request": "../data_alignment_request_20261022.xlsx",
+  "latest_report_model": "20261022_updated19_report_model.json",
+  "previous_executive_report_status": "Superseded:company12daycardsandcomparisonremoveddueinconsistentdatesandmetrics;do notserveascurrentreport.",
+  "company_data_request_status": "withdrawn;userattachmentissufficientformacro/channels;noadditionalstore/SKUrequest",
+  "latest_company_source_model": "20261022_attached_company_aggregate_review.json",
+  "latest_company_aggregate": "20261022_attached_company_daily_checked.csv",
+  "company_source_cautions": [
+    "TCrawsumdividedby1.1:restorecounts",
+    "IexVATdespiteheader;provider/POSmetricandVATscopesdiffer",
+    "companyPOSends10/19;marketlatestcomparisonmustmatch1..19",
+    "July18originaltotalexceeds3channelsby1receipt/7700KRW;causeunverified",
+    "dailyaggregatesavailabledoesnotverifyseparateSKU/receiptanalysisrawcompletion"
+  ],
+  "latest_market_model": "20261022_market_aligned19_model.json",
+  "latest_company_model": "20261022_company_aligned19_model.json",
+  "latest_report_qa": "20261022_updated19_QA.json",
+  "latest_report_files": [
+    {
+      "name": "market_company_updated_20261022.pptx",
+      "bytes": 547990,
+      "sha256": "0f553c3a10cd96210d6f083a3496f1904595c87c3e0ad836812442f445117bd5"
+    },
+    {
+      "name": "market_company_aligned_evidence_20261022.xlsx",
+      "bytes": 1975901,
+      "sha256": "c221ebf08dad2865d5d1fb7a067fd1b8fd0dd7a17f2089a2ee786150d4f10f12"
+    }
+  ]
+}
