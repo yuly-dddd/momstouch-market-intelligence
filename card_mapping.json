@@ -1,0 +1,22 @@
+{
+  "version": "2026-10-20",
+  "batch_cutoff": "previous_completed_day",
+  "cards": {
+    "brand_search": {"source":"data.json.groups","filter":"domain=브랜드","value":"latest completed month value","compare":"prior month and same period prior year","display":"기준일·수집일수·상대지수·전년동기 증감률","meaning":"브랜드 관심의 방향성"},
+    "chicken_interest": {"source":"data.json.groups","filter":"domain=치킨","competitors":["맘스터치","BBQ","bhc","푸라닭"],"value":"monthly average normalized index","compare":"same period prior year","display":"월 일평균 지수 / 전년동기","meaning":"치킨 관심 상승·하락과 경쟁 상대순위"},
+    "burger_interest": {"source":"data.json.groups","filter":"domain=버거","competitors":["맘스터치","맥도날드","버거킹","롯데리아","KFC"],"value":"monthly average normalized index","compare":"same period prior year","display":"월 일평균 지수 / 전년동기","meaning":"버거 관심 상승·하락과 경쟁 상대순위"},
+    "new_product": {"source":"news/rss,youtube,voc","value":"search change + original article count + video views/comments","compare":"D-7~D+7 and competitor same window","display":"절대값·증감률·상대순위","meaning":"출시 후 관심 유지 또는 이탈"},
+    "viral": {"source":"news/rss,youtube,voc","value":"components only; no standalone score","weights":{"search":0.4,"news":0.25,"youtube":0.25,"voc":0.1},"compare":"same product group and same period","display":"구성요소·경쟁사 대비","meaning":"관심 급증·경쟁 역전·담당 액션"},
+    "taste_texture_part": {"source":"data.json.groups","value":"keyword basket normalized index","compare":"same period prior year","display":"맛·식감·형태·부위별 지수, 원문수, 문맥검증","meaning":"제품 개발·메뉴 카피·프로모션 방향"},
+    "pos": {"source":"Dabom POS","value":"sample kg / observation days","compare":"prior month and same period if available","display":"표본 판매 kg/일·판매금액·coverage","meaning":"관측 표본의 판매 흐름, 전국시장 아님"}
+  },
+  "rules": {
+    "cutoff": "기준일은 전일 마감 데이터, 당일 미완료 데이터 제외",
+    "partial_month": "당월은 실제 수집일수와 부분월 여부를 항상 표시",
+    "formula_search": "일별 raw ratio / 같은 키워드 바스켓 전체기간 최고값 * 100",
+    "formula_month": "실제 수집일의 일별 지수 평균",
+    "formula_yoy": "현재 동일기간 평균 / 전년 동일기간 평균 - 1",
+    "separation": "검색지수·뉴스 원문수·YouTube 반응·POS kg를 합산하지 않음",
+    "fallback": "수집 실패 시 마지막 성공 배치와 실패시각을 표시하고 숫자를 새로 만들지 않음"
+  }
+}
